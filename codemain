@@ -1,0 +1,27 @@
+import requests
+from bs4 import BeautifulSoup
+
+# Set the URL you want to scrape
+url = 'https://example.com'
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Parse the HTML content using BeautifulSoup
+soup = BeautifulSoup(response.content, 'html.parser')
+
+# Perform scraping actions
+# For example, find all the <a> tags on the page and print their text
+links = soup.find_all('a')
+for link in links:
+    print(link.text)
+
+# Find an element with a specific class name and print its text
+element = soup.find(class_='example-class')
+if element:
+    print(element.text)
+
+# Find an element with a specific ID and print its text
+element = soup.find(id='example-id')
+if element:
+    print(element.text)
